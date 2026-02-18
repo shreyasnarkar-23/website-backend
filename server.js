@@ -2,7 +2,9 @@ const express=require("express");
 const cors=require("cors");
 const app=express();
 
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 const links={};
@@ -25,3 +27,4 @@ app.get("/use/:token",(req,res)=>{
 });
 
 app.listen(3000,()=>console.log("Backend running"));
+
