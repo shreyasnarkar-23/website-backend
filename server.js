@@ -2,9 +2,7 @@ const express=require("express");
 const cors=require("cors");
 const app=express();
 
-app.use(cors({
-  origin: "*"
-}));
+app.use(cors());
 app.use(express.json());
 
 const links={};
@@ -26,6 +24,11 @@ app.get("/use/:token",(req,res)=>{
   res.sendStatus(200);
 });
 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Backend running"));
 
+
+app.get("/l/:token",(req,res)=>{
+  res.redirect(`http://valentine-frontend-liart.vercel.app/index.html?token=${req.params.token}`);
+});
